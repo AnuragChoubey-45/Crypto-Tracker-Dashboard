@@ -1,0 +1,102 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 20px;
+  color: white;
+  background: linear-gradient(120deg, #1e3a8a, #0f172a);
+  min-height: 100vh;
+}
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+#search {
+  display: block;
+  margin: 0 auto 30px auto;
+  padding: 12px;
+  width: 300px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+}
+#crypto-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 20px;
+}
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 15px;
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  background: #334155;
+}
+
+
+.coin-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.coin-header img {
+  width: 30px;
+  height: 30px;
+}
+
+.price {
+  font-size: 18px;
+  margin: 10px 0;
+}
+.green {
+  color: #22c55e;
+}
+
+.red {
+  color: #ef4444;
+}
+
+button {
+  background: #3b82f6;
+  border: none;
+  padding: 8px 10px;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #2563eb;
+}
+.navbar {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.navbar button {
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: none;
+  background: #1e293b;
+  color: white;
+  cursor: pointer;
+}
+
+.navbar button:hover {
+  background: #3b82f6;
+}
+#coin-detail {
+  text-align: center;
+  margin: 20px;
+}
+
+#coin-detail img {
+  margin-bottom: 10px;
+}
