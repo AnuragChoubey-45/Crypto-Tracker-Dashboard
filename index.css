@@ -14,14 +14,15 @@ h1 {
   display: block;
   margin: 0 auto 30px auto;
   padding: 12px;
-  width: 300px;
+  width: 90%;
+  max-width: 320px;
   border-radius: 8px;
   border: none;
   outline: none;
 }
 #crypto-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
 }
 .card {
@@ -99,4 +100,77 @@ button:hover {
 
 #coin-detail img {
   margin-bottom: 10px;
+}
+.coin-container {
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+}
+
+.back-btn {
+  background: #1e293b;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.coin-container {
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+}
+
+.coin-detail {
+  background: rgba(255,255,255,0.05);
+  padding: 20px;
+  border-radius: 12px;
+  margin: 20px auto;
+  width: 90%;
+  max-width: 300px; /* fixed width for better alignment */
+}
+.chart-container {
+  width: 100%;
+  max-width: 700px;
+  height: 300px;
+  margin: 30px auto;
+}
+@media (max-width: 768px) {
+
+  body {
+    padding: 10px;
+  }
+
+  .price {
+    font-size: 16px;
+  }
+
+  .coin-detail {
+    width: 90%;
+  }
+
+  .chart-container {
+    height: 250px;
+  }
+}
+
+@media (max-width: 500px) {
+
+  .card {
+    padding: 10px;
+  }
+
+  .price {
+    font-size: 14px;
+  }
+
+  .chart-container {
+    height: 200px;
+  }
+
+  .back-btn {
+    margin-bottom: 10px;
+  }
 }
