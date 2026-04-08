@@ -174,3 +174,21 @@ button:hover {
     margin-bottom: 10px;
   }
 }
+/* 🌞 Light mode (default) */
+body {
+  background-color: #ffffff;
+  color: #000000;
+  transition: 0.3s;
+}
+
+/* 🌙 Dark mode */
+.dark {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+/* Cards in dark mode */
+.dark .card {
+  background-color: #1e1e1e;
+  color: white;
+}

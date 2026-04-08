@@ -49,12 +49,26 @@ function displayData(coinsArray) {
         ${change.toFixed(2)}%
       </p>
 
-      <button onclick="addToFav('${coin.id}')">❤️</button>
+     <button onclick="event.stopPropagation(); addToFav('${coin.id}')">❤️</button>
     `;
 
     container.appendChild(div);
   });
 }
+function addToFav(id) {
+  let favs = JSON.parse(localStorage.getItem("favorites")) || [];
+
+  if (!favs.includes(id)) {
+    favs.push(id);
+    localStorage.setItem("favorites", JSON.stringify(favs));
+    alert("Added to favorites ❤️");
+  } else {
+    alert("Already in favorites");
+  }
+}
+
+// 🔥 MAKE IT GLOBAL
+window.addToFav = addToFav;
 
 // 🔍 SEARCH (HOF - filter)
 searchInput.addEventListener("input", () => {
@@ -71,6 +85,25 @@ searchInput.addEventListener("input", () => {
 
   displayData(filteredCoins);
 });
+const themeToggle = document.getElementById("themeToggle");
 
+// Load saved theme
+if (localStorage.getItem("theme") === "dark") {
+  document.body.classList.add("dark");
+  themeToggle.textContent = "🌞";
+}
+
+// Toggle theme
+themeToggle.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+
+  if (document.body.classList.contains("dark")) {
+    localStorage.setItem("theme", "dark");
+    themeToggle.textContent = "🌞";
+  } else {
+    localStorage.setItem("theme", "light");
+    themeToggle.textContent = "🌙";
+  }
+});
 // 🚀 Initial call
 fetchCrypto();
