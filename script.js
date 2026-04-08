@@ -1,4 +1,7 @@
 const container = document.getElementById("crypto-container");
+const searchInput = document.getElementById("searchInput");
+
+let coins = []; // 🔥 global data storage
 
 async function fetchCrypto() {
   const res = await fetch(
@@ -6,25 +9,29 @@ async function fetchCrypto() {
   );
 
   const data = await res.json();
-  console.log(data)
 
-  displayData(data);
+  coins = data; // store globally
+  displayData(coins);
 }
+
+// 🔗 Open coin details page
 function openCoin(id) {
   localStorage.setItem("selectedCoin", id);
   window.location.href = "coin.html";
 }
-function displayData(coins) {
+
+// 🎨 Display coins
+function displayData(coinsArray) {
   container.innerHTML = "";
 
-  coins.slice(0, 20).forEach((coin) => {
-
-    const change = coin.price_change_percentage_24h; // ✅ ADD THIS
+  coinsArray.slice(0, 20).forEach((coin) => {
+    const change = coin.price_change_percentage_24h;
 
     const div = document.createElement("div");
     div.className = "card";
+
     div.onclick = () => {
-    openCoin(coin.id);
+      openCoin(coin.id);
     };
 
     div.innerHTML = `
@@ -46,9 +53,24 @@ function displayData(coins) {
     `;
 
     container.appendChild(div);
-    
   });
 }
 
+// 🔍 SEARCH (HOF - filter)
+searchInput.addEventListener("input", () => {
+  const value = searchInput.value.toLowerCase();
 
+  const filteredCoins = coins.filter((coin) => {
+    if (value === "") return true;
+
+    return (
+      coin.name.toLowerCase().includes(value) ||
+      coin.symbol.toLowerCase().includes(value)
+    );
+  });
+
+  displayData(filteredCoins);
+});
+
+// 🚀 Initial call
 fetchCrypto();
